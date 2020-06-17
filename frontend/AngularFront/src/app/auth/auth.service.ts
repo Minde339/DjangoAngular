@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 export interface AuthResponseData {
     access_token: string;
     refresh_token: string;
-    user: string;
 }
 
 export interface AccessResponseData {
@@ -20,7 +19,7 @@ export class AuthService {
     constructor(private http: HttpClient,private router: Router) {}
 
     private setSession(AuthRes) {
-        localStorage.setItem('access_token', AuthRes.access_token);
+        localStorage.setItem('access', AuthRes.access_token);
         localStorage.setItem('refresh_token', AuthRes.refresh_token);
     }
     private RefreshSession(Respond) {
@@ -28,27 +27,24 @@ export class AuthService {
     }
 
     getAccesstoken() {
-        return localStorage.getItem('access_token');
+        return localStorage.getItem('access');
     }
 
     getRefreshtoken() {
         return localStorage.getItem('refresh_token');
         }
 
-    setAccessToken(access: string) {
-        localStorage.setItem('access', access);
-    }
 
     getNewAccessToken() {
         return this.http.post<AccessResponseData>('http://127.0.0.1:8000/dj-rest-auth/token/refresh/',
         {
-            'refresh': this.getRefreshtoken()
+            "refresh" : this.getRefreshtoken()
         },
         {
-            observe: 'body'
+            observe: 'response'
         }).pipe(
             tap(response =>
-                this.RefreshSession(response)),
+                this.RefreshSession(response.body)),
                 shareReplay(),
         );
     }
@@ -79,10 +75,10 @@ export class AuthService {
     }
 
     logout(){
-        localStorage.removeItem('user');
+        localStorage.removeItem('access');
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth']);
     }
 
     private handleError(errorRes: HttpErrorResponse) {

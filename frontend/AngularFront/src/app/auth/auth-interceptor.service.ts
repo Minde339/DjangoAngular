@@ -58,12 +58,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   addAuthHeader(req: HttpRequest<any>) {
       //get the access token
-    const access_token = localStorage.getItem('access_token');
+    const access = localStorage.getItem('access');
 
-    if (access_token) {
+    if (access) {
       // append access token to the request headers
       return req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + access_token)
+        headers: req.headers.set('Authorization', 'Bearer ' + access)
       })  
     } 
     return req;
