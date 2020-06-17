@@ -1,0 +1,19 @@
+<div>
+  <ul>
+    <li *ngFor="let book of books">
+      <h3 (click)="bookClicked(book)">{{book.title}}</h3>
+      <h3>{{book.price}}</h3>
+      <h3>{{book.quantity}}</h3>
+    </li>
+  </ul>
+</div>
+<div>
+  <ul>
+  Title <input type="text" [(ngModel)]="SelectedBook.title"/><br>
+  Price <input type="text" [(ngModel)]="SelectedBook.price"/><br>
+  Quantity <input type="text" [(ngModel)]="SelectedBook.quantity"/><br>
+  <button *ngIf="SelectedBook.id != -1" (click)="updateBook()">Update</button>
+  <button (click)="createBook()">Create</button>
+  <button *ngIf="SelectedBook.id != -1" (click)="deleteBook()">Delete</button>
+  </ul>
+</div>
