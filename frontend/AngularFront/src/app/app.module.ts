@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { AppRoutingModule} from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 
 
@@ -19,6 +21,8 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     BookComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,9 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     multi: true,
   },
 ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    AlertComponent
+  ]
 })
 export class AppModule { }

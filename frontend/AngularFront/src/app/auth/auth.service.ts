@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, shareReplay } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -26,6 +26,8 @@ export class AuthService {
         localStorage.setItem('access', Respond.access);
     }
 
+    
+
     getAccesstoken() {
         return localStorage.getItem('access');
     }
@@ -38,7 +40,7 @@ export class AuthService {
     getNewAccessToken() {
         return this.http.post<AccessResponseData>('http://127.0.0.1:8000/dj-rest-auth/token/refresh/',
         {
-            "refresh" : this.getRefreshtoken()
+            'refresh' : this.getRefreshtoken()
         },
         {
             observe: 'response'
@@ -82,21 +84,7 @@ export class AuthService {
     }
 
     private handleError(errorRes: HttpErrorResponse) {
-        let errorMessage = 'An unknow error occurred!';
-        if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMessage);
-        }
-        switch (errorRes.error.error.message) {
-            case 'EMAIL_EXISTS':
-                errorMessage = 'This email exists already';
-            break;
-            case 'EMAIL_NOT_FOUND':
-                errorMessage = 'This email does not exist';
-            break;
-            case 'PASSWORD':
-                errorMessage = 'Password is incorrect';
-            break;
-        }
-        return throwError(errorMessage);
+        return throwError(errorRes);
     }
+
 }
