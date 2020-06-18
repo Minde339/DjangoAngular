@@ -6,6 +6,7 @@ import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 
 
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html'
@@ -51,7 +52,6 @@ export class AuthComponent implements OnDestroy {
         this.isLoading = false;
       },
       errorMessage => {
-        console.log(errorMessage);
         this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
@@ -69,7 +69,7 @@ export class AuthComponent implements OnDestroy {
       this.closeSub.unsubscribe();
     }
   }
-  private showErrorAlert(message: string) {
+  private showErrorAlert(message : string) {
     const alertCmpFactory =  this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
