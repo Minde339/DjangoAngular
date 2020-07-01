@@ -19,12 +19,15 @@ export class BookComponent implements OnInit {
       title:'',
       price:'',
       quantity:'',
+      image1:'',
+      image2:'',
+      image3:'',
     };
   }
   getBooks = () => {
     this.api.getAllBooks().subscribe(
       data => {
-          this.books = data; 
+          this.books = data;
       },
     error => {
       console.log(error);

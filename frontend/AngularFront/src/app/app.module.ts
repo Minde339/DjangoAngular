@@ -12,6 +12,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
+import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -23,12 +25,14 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     LoadingSpinnerComponent,
     AlertComponent,
     PlaceholderDirective,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    NgbModule,
   ],
   providers: [AuthService,
   AuthGuard,

@@ -1,0 +1,8 @@
+.carousel-inner{
+  height: 100px;
+}
+
+.item, img{
+   height: 100% !important;
+   width:  100% !important;
+}

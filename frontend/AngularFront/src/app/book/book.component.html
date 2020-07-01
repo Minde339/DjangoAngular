@@ -1,10 +1,15 @@
 <div>
   <ul>
-    <li *ngFor="let book of books">
+    <div *ngFor="let book of books">
       <h3 (click)="bookClicked(book)">{{book.title}}</h3>
       <h3>{{book.price}}</h3>
       <h3>{{book.quantity}}</h3>
-    </li>
+      <div>
+      <img src="{{book.image1}}" alt="{{book.title}}">
+      <img src="{{book.image2}}" alt="{{book.title}}">
+      <img src="{{book.image3}}" alt="{{book.title}}">
+      </div>
+    </div>
   </ul>
 </div>
 <div>
