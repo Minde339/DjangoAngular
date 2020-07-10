@@ -1,5 +1,8 @@
 <div class="cart-item">
-  <span>{{ cartItem.price}}</span> x
+  <span>{{ cartItem.title}}</span> x
   <span>{{ cartItem.quantity}} </span>
   <strong>{{ cartItem.price*cartItem.quantity | currency:'EUR' }}</strong>
+  <i class="far fa-plus-square"></i> |
+  <i class="far fa-minus-square"></i> |
+  <i class="far fa-trash-alt"></i>
 </div>

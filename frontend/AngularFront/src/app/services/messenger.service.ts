@@ -11,7 +11,6 @@ export class MessengerService {
   constructor() { }
 
   sendMsg(product){
-    console.log(product)
     this.subject.next(product) // Trigerring an event
   }
 

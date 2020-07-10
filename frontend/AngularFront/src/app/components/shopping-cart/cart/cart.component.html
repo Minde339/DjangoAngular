@@ -1,5 +1,8 @@
 <div *ngIf="cartItems.length === 0" class="alert alert-info">No Items Added to Cart</div>
-
+<link rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+ crossorigin="anonymous">
 <ul *ngIf="cartItems.length > 0" class="list-group">
   <li class="list-group-item" *ngFor="let item of cartItems">
     <app-cart-item [cartItem]="item"></app-cart-item>

@@ -12,7 +12,6 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
-import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { NavComponent } from './components/shared/nav/nav.component';
@@ -21,6 +20,7 @@ import { FiltersComponent } from './components/shopping-cart/filters/filters.com
 import { ProductListComponent } from './components/shopping-cart/product-list/product-list.component';
 import { CartComponent } from './components/shopping-cart/cart/cart.component';
 import { CartItemComponent } from './components/shopping-cart/cart/cart-item/cart-item.component';
+import { HomeComponent } from './components/shared/home/home.component';
 
 @NgModule({
   declarations: [
