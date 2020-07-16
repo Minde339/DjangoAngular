@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
@@ -17,11 +17,41 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
 
     this.msg.getMsg().subscribe(product => {
-      console.log(product)
       this.addProductToCart(product)
     })
   }
-  addProductToCart(product) {
+
+receiveQuantity($event) {
+
+  let productExists = false
+
+  for(let i in this.cartItems) {
+    if(this.cartItems[i].id === $event.id) {
+      this.cartItems[i].quantity
+      productExists = true
+      break;
+    }
+  }
+  if (!productExists) {
+    this.cartItems.push({
+      id: $event.id,
+      quantity: 1
+    })
+  }
+  if ($event.quantity === 0) {
+   for (let q in this.cartItems){
+     if(this.cartItems[q].quantity === 0){
+       this.cartItems.splice(this.cartItems[q],1)
+     }
+   }
+  }
+    this.cartTotal = 0
+    this.cartItems.forEach(item => {
+      this.cartTotal += (item.quantity * item.price)
+    })
+}
+
+addProductToCart(product) {
 
     let productExists = false
 

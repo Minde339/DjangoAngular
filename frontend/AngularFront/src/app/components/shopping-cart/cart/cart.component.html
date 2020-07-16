@@ -5,11 +5,11 @@ integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV
  crossorigin="anonymous">
 <ul *ngIf="cartItems.length > 0" class="list-group">
   <li class="list-group-item" *ngFor="let item of cartItems">
-    <app-cart-item [cartItem]="item"></app-cart-item>
+    <app-cart-item [cartItem]="item" (Event)="receiveQuantity($event)"></app-cart-item>
   </li>
 
-    <li class="list-group-item active">
-      <strong>Total {{ cartTotal | currency:'EUR' }}</strong>
-    </li>
+  <li class="list-group">
+      <a href="#" class="list-group-item list-group-item-action active">Continue with Total {{ cartTotal | currency:'EUR' }}</a>
+  </li>
 </ul>
 

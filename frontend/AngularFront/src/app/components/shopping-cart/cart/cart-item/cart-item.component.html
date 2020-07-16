@@ -2,7 +2,12 @@
   <span>{{ cartItem.title}}</span> x
   <span>{{ cartItem.quantity}} </span>
   <strong>{{ cartItem.price*cartItem.quantity | currency:'EUR' }}</strong>
-  <i class="far fa-plus-square"></i> |
-  <i class="far fa-minus-square"></i> |
-  <i class="far fa-trash-alt"></i>
+  <div class="cart-item">
+  <button  (click)="increment()"
+  class="btn-success far fa-plus-square"></button> |
+  <button (click)="decrement()"
+  class="btn-secondary far fa-minus-square"></button> |
+  <button (click)="clear()"
+   class="btn-danger far fa-trash-alt"></button>
+  </div>
 </div>
